@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     let job;
     try{job=await api('api/ai/jobs/'+identity);misses=0;}catch(error){misses++;el('ai-status').textContent='Connection interrupted; checking the existing request…';if(misses>=4)throw error;await wait(1000);continue;}
     metrics(job);el('ai-status').textContent=job.status==='cancelling'?'Cancellation requested; waiting for the upstream read to finish.':job.status==='running'?(kind==='run'?'ODS is generating…':'ODS is interpreting the selected replay evidence…'):job.error||('Request '+job.status+'.');
-    if(kind==='run'){el('ai-output').textContent=job.text||'Waiting for first content…';}
+    if(kind==='run'){el('ai-output').textContent=job.text||(['running','cancelling'].includes(job.status)?'Waiting for first content…':'No content was generated.');}
     if(['done','failed','cancelled'].includes(job.status)){
      lastReport={...job,frames};
      el('ai-save').disabled=false;
