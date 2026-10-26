@@ -89,8 +89,8 @@
       "sha256": "5090a0511ecdd477635f1acd8d41f8a82b8217f2f3042fbaf6cfecc311cd7978"
     },
     "test_ai.py": {
-      "bytes": 14931,
-      "sha256": "6dc49ff3fa827846c7cd9c26743578e9bdc8697ee3ef4716f8f097d1a09b22a7"
+      "bytes": 15659,
+      "sha256": "428853e20e51be7e51c91e9edea1c1c7350e0eeffaeafe44c1cb39c6bdb2e8f0"
     },
     "test_replay.mjs": {
       "bytes": 4013,

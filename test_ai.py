@@ -4,6 +4,8 @@ import json
 import threading
 import time
 import unittest
+import unittest.mock
+from itertools import count
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from ai_bridge import AIEngine, RequestError, loopback_base
 from evidence import frames_from, evidence_for, validated_analysis
@@ -134,9 +136,20 @@ class ModelFixture(unittest.TestCase):
 
 class InferenceTests(ModelFixture):
     def test_success_metrics_use_reported_usage(self):
-        job=self.run_job();self.assertEqual(job['status'],'done');self.assertEqual(job['outputTokens'],5);self.assertGreaterEqual(job['ttftMs'],0);self.assertGreater(job['tokensPerSecond'],0)
+        with unittest.mock.patch('ai_bridge.time', wraps=time) as clock:
+            clock.monotonic.side_effect=count(100.0, 0.02)
+            job=self.run_job()
+        self.assertEqual(job['status'],'done');self.assertEqual(job['outputTokens'],5);self.assertGreaterEqual(job['ttftMs'],0);self.assertGreater(job['tokensPerSecond'],0)
         self.assertEqual(self.upstream.received['model'],'fixture-model');self.assertTrue(self.upstream.received['stream_options']['include_usage']);self.assertEqual(self.upstream.calls,1)
         self.assertNotIn('test-fixture-key',json.dumps(job));self.assertNotIn('test-fixture-key',json.dumps(self.engine.info()))
+    def test_zero_elapsed_keeps_token_rate_unknown(self):
+        with unittest.mock.patch('ai_bridge.time', wraps=time) as clock:
+            clock.monotonic.return_value=100.0
+            job=self.run_job()
+        self.assertEqual(job['status'],'done')
+        self.assertEqual(job['outputTokens'],5)
+        self.assertEqual(job['elapsedMs'],0)
+        self.assertIsNone(job['tokensPerSecond'])
     def test_missing_usage_stays_unknown(self):
         job=self.run_job('no-usage');self.assertEqual(job['status'],'done');self.assertIsNone(job['outputTokens']);self.assertIsNone(job['tokensPerSecond'])
     def test_truncation_and_malformed_responses_fail(self):
@@ -176,7 +189,9 @@ class InferenceTests(ModelFixture):
         with self.assertRaises(RequestError):self.engine.snapshot(first)
     def test_failed_validation_preserves_reported_usage(self):
         self.upstream.mode='normal'
-        job=self.terminal(self.engine.start('explain',{'frames':[replay()]})['id'])
+        with unittest.mock.patch('ai_bridge.time', wraps=time) as clock:
+            clock.monotonic.side_effect=count(100.0, 0.02)
+            job=self.terminal(self.engine.start('explain',{'frames':[replay()]})['id'])
         self.assertEqual(job['status'],'failed')
         self.assertEqual(job['outputTokens'],5)
         self.assertGreater(job['tokensPerSecond'],0)
