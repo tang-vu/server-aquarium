@@ -1,21 +1,24 @@
-# Server Aquarium demo
+# Server Aquarium: 90-second walkthrough
 
-## Suggested 60–90 second walkthrough
+## Story
 
-1. Open the companion URL or the native ODS preview. The default Demo aquarium shows Simulation Studio and explicit simulated labels.
-2. Start with Calm waters. Select a fish or service card and inspect its evolving CPU history and container RAM amount/limit. Point out the distinct host RAM and GPU/VRAM cards.
-3. Choose AI inference. The Model Engine gains a lavender halo; GPU load and VRAM rise with the imagined request. These are scripted simulated readings.
-4. Choose Traffic surge, then Attention. Portal, Database and Background Worker carry the pressure. Pause simulation to inspect a stable scene; Resume simulation continues it.
-5. Choose Recovery drill. Observe Database go Offline at second 6, reconnect at second 13 and return to healthy flow. Restart scene repeats the drill. Manual CPU spike and Outage persist until recovery or a scene reset.
-6. Choose This computer to see actual ODS services and physical host RAM, separately labeled WSL runtime RAM, and whole-device NVIDIA GPU observations. The studio hides in live mode; per-service GPU attribution is not measured.
-7. Export observations to local JSON. Record report produces up to 15 seconds of local WebM; after recording ends choose Save video. Both exports identify simulated versus live data.
+Observe a real ODS request, replay an incident, then follow an explanation back to its measurements.
 
-## Draft entry text
+## Suggested recording
 
-Server Aquarium makes an ODS stack easier to explore. Each service is a fish: CPU changes its pace, container RAM changes its size, and stopped services float belly-up. Simulation Studio brings the view to life through four resource scenarios, responsive GPU/VRAM and memory cards, a procedural glowing reef, pause/resume and a recovery drill. A read-only local companion adds real Docker health and resource observations with clearly scoped host/runtime RAM and whole-device NVIDIA telemetry. Explicit missing/stale data, service history, an attention filter and local JSON/video reports make the experience useful beyond the animation.
+- **0–10 seconds:** show the aquarium and four Simulation Studio scenes. State that this mode is simulated.
+- **10–25 seconds:** in the local companion, run the default AI prompt. The view switches to This computer. Show streamed content, first-content latency, provider-reported tokens and the live whole-device GPU/VRAM readings. Do not describe that GPU activity as measured per-service attribution.
+- **25–40 seconds:** open sample replay. Clearly identify the fictional recorded incident. Scrub between the first frame and the Database-offline frame; compare host RAM, GPU/VRAM and service state.
+- **40–60 seconds:** choose Explain this moment. ODS interprets the two supplied frames and computed changes. Click an evidence reference to return to its captured moment. Distinguish observed change, model interpretation and proposed checks.
+- **60–75 seconds:** show the public demo's recorded ODS explanation for that exact sample. It is labeled recorded and makes no live gateway request. Save replay or Save AI report to demonstrate portable evidence.
+- **75–90 seconds:** show the public repository, passing checks and ODS build history. Keep credentials and private runtime reports outside the published material.
 
-## Collaboration and evidence
+## Entry draft
 
-tang-vu leads project direction, usefulness and quality requirements, collaborating with Codex on prompts, implementation guidance/reference source, review and browser validation. The ODS Portal model and workspace tools performed all application source edits and build steps. Saved prompt/tool receipts, exact source hashes and browser QA document the work.
+Server Aquarium turns an ODS stack into a living ecosystem. Services become fish whose behavior follows resource readings, while whole-device GPU/VRAM and clearly scoped memory stay visible. Simulation Studio teaches the experience through four safe workloads. Flight recorder lets a user revisit a moment and compare a baseline. AI lab runs genuine ODS inference with measured latency and reported token counts; Explain this moment turns recorded evidence and computed changes into an interpretation with clickable references. A credential-free public demo, replay files and local reports make the experience easy to explore and inspect.
 
-This is a suggested walkthrough and entry draft. No contest entry or public deployment has been submitted; eligibility is not determined by these artifacts.
+## Provenance
+
+tang-vu leads direction, scope and quality, collaborating with Codex on reference source, prompts, analysis, implementation guidance, review and command/browser validation. ODS Portal model/workspace tools performed source edits and builds. Saved source hashes, prompt/tool receipts and checks record the workflow. Recorded examples use synthetic resource frames and genuine ODS model responses; they are not presented as live public inference or proof of automated root-cause diagnosis.
+
+This is a walkthrough and draft, not a contest submission or eligibility determination.

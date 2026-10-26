@@ -1,0 +1,914 @@
+{
+  "version": 1,
+  "app": "Server Aquarium",
+  "defaultIndex": 2,
+  "frames": [
+    {
+      "at": "2026-10-26T12:00:00+00:00",
+      "source": "demo",
+      "servicesKnown": true,
+      "services": [
+        {
+          "id": "portal",
+          "name": "Portal",
+          "cpu": 18,
+          "mem": 30,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "engine",
+          "name": "Model Engine",
+          "cpu": 27,
+          "mem": 35,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "database",
+          "name": "Database",
+          "cpu": 24,
+          "mem": 40,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "search",
+          "name": "Search",
+          "cpu": 21,
+          "mem": 45,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "cache",
+          "name": "Cache",
+          "cpu": 9,
+          "mem": 50,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "worker",
+          "name": "Background Worker",
+          "cpu": 16,
+          "mem": 55,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        }
+      ],
+      "hardware": {
+        "source": "simulated",
+        "sampledAt": "2026-10-26T12:00:00+00:00",
+        "memory": {
+          "usedBytes": 12240656793.6,
+          "totalBytes": 34359738368
+        },
+        "gpus": [
+          {
+            "name": "Model accelerator - simulated",
+            "utilization": 24,
+            "memoryUsedBytes": 6012954214.4,
+            "memoryTotalBytes": 17179869184,
+            "temperatureC": 47.2,
+            "powerW": 66.0
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T12:00:10+00:00",
+      "source": "demo",
+      "servicesKnown": true,
+      "services": [
+        {
+          "id": "portal",
+          "name": "Portal",
+          "cpu": 32,
+          "mem": 30,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "engine",
+          "name": "Model Engine",
+          "cpu": 48,
+          "mem": 35,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "database",
+          "name": "Database",
+          "cpu": 25,
+          "mem": 40,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "search",
+          "name": "Search",
+          "cpu": 18,
+          "mem": 45,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "cache",
+          "name": "Cache",
+          "cpu": 13,
+          "mem": 50,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "worker",
+          "name": "Background Worker",
+          "cpu": 30,
+          "mem": 55,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        }
+      ],
+      "hardware": {
+        "source": "simulated",
+        "sampledAt": "2026-10-26T12:00:10+00:00",
+        "memory": {
+          "usedBytes": 20615843020.8,
+          "totalBytes": 34359738368
+        },
+        "gpus": [
+          {
+            "name": "Model accelerator - simulated",
+            "utilization": 88,
+            "memoryUsedBytes": 13743895347.2,
+            "memoryTotalBytes": 17179869184,
+            "temperatureC": 66.4,
+            "powerW": 162.0
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T12:00:20+00:00",
+      "source": "demo",
+      "servicesKnown": true,
+      "services": [
+        {
+          "id": "portal",
+          "name": "Portal",
+          "cpu": 91,
+          "mem": 30,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "engine",
+          "name": "Model Engine",
+          "cpu": 48,
+          "mem": 35,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "database",
+          "name": "Database",
+          "cpu": 0,
+          "mem": 0,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "exited",
+          "health": "simulated",
+          "offline": true,
+          "unknown": false
+        },
+        {
+          "id": "search",
+          "name": "Search",
+          "cpu": 50,
+          "mem": 45,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "cache",
+          "name": "Cache",
+          "cpu": 38,
+          "mem": 50,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "worker",
+          "name": "Background Worker",
+          "cpu": 84,
+          "mem": 55,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        }
+      ],
+      "hardware": {
+        "source": "simulated",
+        "sampledAt": "2026-10-26T12:00:20+00:00",
+        "memory": {
+          "usedBytes": 23837068492.8,
+          "totalBytes": 34359738368
+        },
+        "gpus": [
+          {
+            "name": "Model accelerator - simulated",
+            "utilization": 86,
+            "memoryUsedBytes": 14066017894.4,
+            "memoryTotalBytes": 17179869184,
+            "temperatureC": 65.8,
+            "powerW": 159.0
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T12:00:30+00:00",
+      "source": "demo",
+      "servicesKnown": true,
+      "services": [
+        {
+          "id": "portal",
+          "name": "Portal",
+          "cpu": 35,
+          "mem": 30,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "engine",
+          "name": "Model Engine",
+          "cpu": 40,
+          "mem": 35,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "database",
+          "name": "Database",
+          "cpu": 48,
+          "mem": 40,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "search",
+          "name": "Search",
+          "cpu": 24,
+          "mem": 45,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "cache",
+          "name": "Cache",
+          "cpu": 20,
+          "mem": 50,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "worker",
+          "name": "Background Worker",
+          "cpu": 45,
+          "mem": 55,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        }
+      ],
+      "hardware": {
+        "source": "simulated",
+        "sampledAt": "2026-10-26T12:00:30+00:00",
+        "memory": {
+          "usedBytes": 18683107737.6,
+          "totalBytes": 34359738368
+        },
+        "gpus": [
+          {
+            "name": "Model accelerator - simulated",
+            "utilization": 42,
+            "memoryUsedBytes": 9878424780.8,
+            "memoryTotalBytes": 17179869184,
+            "temperatureC": 52.6,
+            "powerW": 93.0
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T12:00:40+00:00",
+      "source": "demo",
+      "servicesKnown": true,
+      "services": [
+        {
+          "id": "portal",
+          "name": "Portal",
+          "cpu": 18,
+          "mem": 30,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "engine",
+          "name": "Model Engine",
+          "cpu": 27,
+          "mem": 35,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "database",
+          "name": "Database",
+          "cpu": 24,
+          "mem": 40,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "search",
+          "name": "Search",
+          "cpu": 21,
+          "mem": 45,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "cache",
+          "name": "Cache",
+          "cpu": 9,
+          "mem": 50,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        },
+        {
+          "id": "worker",
+          "name": "Background Worker",
+          "cpu": 16,
+          "mem": 55,
+          "memUsedBytes": null,
+          "memLimitBytes": null,
+          "state": "running",
+          "health": "simulated",
+          "offline": false,
+          "unknown": false
+        }
+      ],
+      "hardware": {
+        "source": "simulated",
+        "sampledAt": "2026-10-26T12:00:40+00:00",
+        "memory": {
+          "usedBytes": 12240656793.6,
+          "totalBytes": 34359738368
+        },
+        "gpus": [
+          {
+            "name": "Model accelerator - simulated",
+            "utilization": 24,
+            "memoryUsedBytes": 6012954214.4,
+            "memoryTotalBytes": 17179869184,
+            "temperatureC": 47.2,
+            "powerW": 66.0
+          }
+        ]
+      }
+    }
+  ],
+  "recordedExplanation": {
+    "kind": "explain",
+    "status": "recorded",
+    "model": "ods/current",
+    "createdAt": "2026-10-26T14:53:44.162703+00:00",
+    "ttftMs": 2722.8,
+    "elapsedMs": 15601,
+    "outputTokens": 353,
+    "tokensPerSecond": 22.63,
+    "evidence": [
+      {
+        "id": "E1",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "demo replay supplied by the browser; 6 services, 0 confirmed offline, 0 unknown. Running is not proof of application health."
+      },
+      {
+        "id": "E2",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "Host RAM bytes used/total: 12240656793.6/34359738368."
+      },
+      {
+        "id": "E3",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Model accelerator - simulated\" GPU 24%; VRAM bytes 6012954214.4/17179869184. Whole-device measurements include other host workloads; no per-service attribution."
+      },
+      {
+        "id": "E4",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Model Engine\": CPU 27%; container RAM 35%; state running; health simulated."
+      },
+      {
+        "id": "E5",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Database\": CPU 24%; container RAM 40%; state running; health simulated."
+      },
+      {
+        "id": "E6",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Search\": CPU 21%; container RAM 45%; state running; health simulated."
+      },
+      {
+        "id": "E7",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Portal\": CPU 18%; container RAM 30%; state running; health simulated."
+      },
+      {
+        "id": "E8",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Background Worker\": CPU 16%; container RAM 55%; state running; health simulated."
+      },
+      {
+        "id": "E9",
+        "frameIndex": 0,
+        "at": "2026-10-26T12:00:00+00:00",
+        "text": "\"Cache\": CPU 9%; container RAM 50%; state running; health simulated."
+      },
+      {
+        "id": "E10",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "demo replay supplied by the browser; 6 services, 1 confirmed offline, 0 unknown. Running is not proof of application health."
+      },
+      {
+        "id": "E11",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "Host RAM bytes used/total: 23837068492.8/34359738368."
+      },
+      {
+        "id": "E12",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Model accelerator - simulated\" GPU 86%; VRAM bytes 14066017894.4/17179869184. Whole-device measurements include other host workloads; no per-service attribution."
+      },
+      {
+        "id": "E13",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Database\": CPU 0%; container RAM 0%; state offline; health simulated."
+      },
+      {
+        "id": "E14",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Portal\": CPU 91%; container RAM 30%; state running; health simulated."
+      },
+      {
+        "id": "E15",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Background Worker\": CPU 84%; container RAM 55%; state running; health simulated."
+      },
+      {
+        "id": "E16",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Search\": CPU 50%; container RAM 45%; state running; health simulated."
+      },
+      {
+        "id": "E17",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Model Engine\": CPU 48%; container RAM 35%; state running; health simulated."
+      },
+      {
+        "id": "E18",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "\"Cache\": CPU 38%; container RAM 50%; state running; health simulated."
+      },
+      {
+        "id": "E19",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: host RAM used bytes +11596411699.2. This is host RAM, distinct from all container RAM percentages."
+      },
+      {
+        "id": "E20",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Model accelerator - simulated\" GPU utilization +62 percentage points; VRAM used bytes +8053063680.0. Device-wide; cause and service attribution are not established."
+      },
+      {
+        "id": "E21",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Database\" CPU -24 percentage points; container RAM -40 percentage points; state running -> offline. A +0 change means unchanged, not increased."
+      },
+      {
+        "id": "E22",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Portal\" CPU +73 percentage points; container RAM +0 percentage points; state running -> running. A +0 change means unchanged, not increased."
+      },
+      {
+        "id": "E23",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Background Worker\" CPU +68 percentage points; container RAM +0 percentage points; state running -> running. A +0 change means unchanged, not increased."
+      },
+      {
+        "id": "E24",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Cache\" CPU +29 percentage points; container RAM +0 percentage points; state running -> running. A +0 change means unchanged, not increased."
+      },
+      {
+        "id": "E25",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Search\" CPU +29 percentage points; container RAM +0 percentage points; state running -> running. A +0 change means unchanged, not increased."
+      },
+      {
+        "id": "E26",
+        "frameIndex": 1,
+        "at": "2026-10-26T12:00:20+00:00",
+        "text": "COMPUTED CHANGE: \"Model Engine\" CPU +21 percentage points; container RAM +0 percentage points; state running -> running. A +0 change means unchanged, not increased."
+      }
+    ],
+    "analysis": {
+      "summary": {
+        "text": "Host RAM and GPU utilization spiked significantly while the Database service transitioned from running to offline.",
+        "evidenceIds": [
+          "E19",
+          "E20",
+          "E21",
+          "E10"
+        ]
+      },
+      "observations": [
+        {
+          "text": "Host RAM usage increased by approximately 11.6 GB over 20 seconds, indicating a system-wide resource surge.",
+          "evidenceIds": [
+            "E19",
+            "E2"
+          ]
+        },
+        {
+          "text": "GPU utilization jumped by 62 percentage points and VRAM consumption rose by 8 GB, correlating with the host memory spike.",
+          "evidenceIds": [
+            "E20",
+            "E3"
+          ]
+        },
+        {
+          "text": "The Database service state changed to offline with a -40 percentage point drop in container RAM, while other services remained running.",
+          "evidenceIds": [
+            "E21",
+            "E13",
+            "E5"
+          ]
+        }
+      ],
+      "nextChecks": [
+        {
+          "text": "Verify if the Database offline state caused the resource spike or if the spike caused the failure.",
+          "evidenceIds": [
+            "E21",
+            "E19",
+            "E20"
+          ]
+        },
+        {
+          "text": "Investigate why the Database container RAM dropped to zero while host RAM and GPU usage increased.",
+          "evidenceIds": [
+            "E21",
+            "E19",
+            "E20"
+          ]
+        }
+      ]
+    },
+    "rawResponse": "{\n  \"summary\": {\n    \"text\": \"Host RAM and GPU utilization spiked significantly while the Database service transitioned from running to offline.\",\n    \"evidenceIds\": [\"E19\", \"E20\", \"E21\", \"E10\"]\n  },\n  \"observations\": [\n    {\n      \"text\": \"Host RAM usage increased by approximately 11.6 GB over 20 seconds, indicating a system-wide resource surge.\",\n      \"evidenceIds\": [\"E19\", \"E2\"]\n    },\n    {\n      \"text\": \"GPU utilization jumped by 62 percentage points and VRAM consumption rose by 8 GB, correlating with the host memory spike.\",\n      \"evidenceIds\": [\"E20\", \"E3\"]\n    },\n    {\n      \"text\": \"The Database service state changed to offline with a -40 percentage point drop in container RAM, while other services remained running.\",\n      \"evidenceIds\": [\"E21\", \"E13\", \"E5\"]\n    }\n  ],\n  \"nextChecks\": [\n    {\n      \"text\": \"Verify if the Database offline state caused the resource spike or if the spike caused the failure.\",\n      \"evidenceIds\": [\"E21\", \"E19\", \"E20\"]\n    },\n    {\n      \"text\": \"Investigate why the Database container RAM dropped to zero while host RAM and GPU usage increased.\",\n      \"evidenceIds\": [\"E21\", \"E19\", \"E20\"]\n    }\n  ]\n}",
+    "rawResponseSha256": "ff80f8061c57b34679d47900fba309c4992b3ce4506b526c6c039e07138a04e4",
+    "note": "Genuine ODS response to synthetic replay frames. Recorded example; static hosting does not run live inference.",
+    "frames": [
+      {
+        "at": "2026-10-26T12:00:00+00:00",
+        "source": "demo",
+        "servicesKnown": true,
+        "services": [
+          {
+            "id": "portal",
+            "name": "Portal",
+            "cpu": 18,
+            "mem": 30,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "engine",
+            "name": "Model Engine",
+            "cpu": 27,
+            "mem": 35,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "database",
+            "name": "Database",
+            "cpu": 24,
+            "mem": 40,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "search",
+            "name": "Search",
+            "cpu": 21,
+            "mem": 45,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "cache",
+            "name": "Cache",
+            "cpu": 9,
+            "mem": 50,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "worker",
+            "name": "Background Worker",
+            "cpu": 16,
+            "mem": 55,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          }
+        ],
+        "hardware": {
+          "source": "simulated",
+          "sampledAt": "2026-10-26T12:00:00+00:00",
+          "memory": {
+            "usedBytes": 12240656793.6,
+            "totalBytes": 34359738368
+          },
+          "gpus": [
+            {
+              "name": "Model accelerator - simulated",
+              "utilization": 24,
+              "memoryUsedBytes": 6012954214.4,
+              "memoryTotalBytes": 17179869184,
+              "temperatureC": 47.2,
+              "powerW": 66.0
+            }
+          ]
+        }
+      },
+      {
+        "at": "2026-10-26T12:00:20+00:00",
+        "source": "demo",
+        "servicesKnown": true,
+        "services": [
+          {
+            "id": "portal",
+            "name": "Portal",
+            "cpu": 91,
+            "mem": 30,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "engine",
+            "name": "Model Engine",
+            "cpu": 48,
+            "mem": 35,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "database",
+            "name": "Database",
+            "cpu": 0,
+            "mem": 0,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "exited",
+            "health": "simulated",
+            "offline": true,
+            "unknown": false
+          },
+          {
+            "id": "search",
+            "name": "Search",
+            "cpu": 50,
+            "mem": 45,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "cache",
+            "name": "Cache",
+            "cpu": 38,
+            "mem": 50,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          },
+          {
+            "id": "worker",
+            "name": "Background Worker",
+            "cpu": 84,
+            "mem": 55,
+            "memUsedBytes": null,
+            "memLimitBytes": null,
+            "state": "running",
+            "health": "simulated",
+            "offline": false,
+            "unknown": false
+          }
+        ],
+        "hardware": {
+          "source": "simulated",
+          "sampledAt": "2026-10-26T12:00:20+00:00",
+          "memory": {
+            "usedBytes": 23837068492.8,
+            "totalBytes": 34359738368
+          },
+          "gpus": [
+            {
+              "name": "Model accelerator - simulated",
+              "utilization": 86,
+              "memoryUsedBytes": 14066017894.4,
+              "memoryTotalBytes": 17179869184,
+              "temperatureC": 65.8,
+              "powerW": 159.0
+            }
+          ]
+        }
+      }
+    ],
+    "baselineAt": "2026-10-26T12:00:00+00:00",
+    "forAt": "2026-10-26T12:00:20+00:00"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "release": "Server Aquarium Observatory",
+  "repository": "https://github.com/tang-vu/server-aquarium",
+  "demo": "https://tang-vu.github.io/server-aquarium/",
+  "applicationEditsAndBuilds": "ODS Portal model/workspace tools; tang-vu leads project direction and quality, collaborating with Codex on reference source, prompts and QA",
+  "files": {
+    "index.html": {
+      "bytes": 4886,
+      "sha256": "c070b15e10e6eb3ddc5c71f4454afe3f7524e5f1d7f5481724036caeab331388"
+    },
+    "styles.css": {
+      "bytes": 15604,
+      "sha256": "52d9a10a786cc07cac2b677bd1f7591ad4aaa6837f79577ea117b17be1a9ac61"
+    },
+    "observatory.css": {
+      "bytes": 5062,
+      "sha256": "5450285838163dcc9a6e376bc9109188471f7dd4995e818d1a28672ffa38b55a"
+    },
+    "aquarium-art.js": {
+      "bytes": 5255,
+      "sha256": "9f13b35a70a9ee62c5695e118044e0a6d579cf7bfa043a744b7abba9ab927a35"
+    },
+    "app.js": {
+      "bytes": 8599,
+      "sha256": "dfada069c22cd55c7bb4935df2c9182200b1ecfd67b4c392d64864c3c367413e"
+    },
+    "aquarium-scene.js": {
+      "bytes": 5137,
+      "sha256": "2eccfdde65564e790b3d89004168a05db14333f3604440a744eea26d84431ec2"
+    },
+    "telemetry.js": {
+      "bytes": 3711,
+      "sha256": "1e641c016a9195611b1ae2662016befa3ce2c012e38f1b91dafec27f87eccd95"
+    },
+    "hardware.js": {
+      "bytes": 6138,
+      "sha256": "8e20ad32ef0fa285e643a49b3afeeace7b4838ba8c02f154363458dff36a9806"
+    },
+    "demo.js": {
+      "bytes": 10515,
+      "sha256": "b52417711061df46b18cee27df084c6d9d3ccf979cd0f684f0d112c1f169a1bc"
+    },
+    "recording.js": {
+      "bytes": 4065,
+      "sha256": "a5769f2efec78fa71cb51b4ccff13e834744e7dbfe3179232b2853115ad7810e"
+    },
+    "replay-core.js": {
+      "bytes": 4169,
+      "sha256": "89a26b733d1c39b8d4a45fb941d04f3ef99ddad94802b395f018743f65a68b97"
+    },
+    "replay.js": {
+      "bytes": 10056,
+      "sha256": "46f70ba5b6c52793bf27151dbed64ac9867005f9f55066f44a1ca7ddbf4835b3"
+    },
+    "lab.js": {
+      "bytes": 10731,
+      "sha256": "efe6aea3c25f568fd4777b4846fe62e7787c5417df6b0e676f6405b681052053"
+    },
+    "sample-replay.json": {
+      "bytes": 27211,
+      "sha256": "398146a663af83a23174a2cc21b7c9299d31336a4643f9c1d5819cce50d7e3f0"
+    },
+    ".nojekyll": {
+      "bytes": 38,
+      "sha256": "841fe42507c1cb6e9ee1ba915a6284b33b098b149e4683496a635abdc2754de0"
+    },
+    "companion.py": {
+      "bytes": 9163,
+      "sha256": "921bafe13a80148f0bb36e44ab1fd508ea0898724ec7ee334a0fbce94c8bad6e"
+    },
+    "hardware.py": {
+      "bytes": 5478,
+      "sha256": "17b334d240f2103368fdc362c8337b64d67aae8070effce858128dfc813fca34"
+    },
+    "ai_bridge.py": {
+      "bytes": 11128,
+      "sha256": "ba24e7de58edc5daab7b77a5cd837aec91114cf28f22c100d5e8ea1974cc74c5"
+    },
+    "evidence.py": {
+      "bytes": 8810,
+      "sha256": "cb9d858071b74ac10a1a401af573637d102d9b8d22127eeba193c12c19b81a05"
+    },
+    "test_companion.py": {
+      "bytes": 6720,
+      "sha256": "4e6bf0f8dc49de52e2e428762a93952a4d49a708987b3b60878abd9cb0a02e17"
+    },
+    "test_hardware.py": {
+      "bytes": 5927,
+      "sha256": "5090a0511ecdd477635f1acd8d41f8a82b8217f2f3042fbaf6cfecc311cd7978"
+    },
+    "test_ai.py": {
+      "bytes": 14931,
+      "sha256": "6dc49ff3fa827846c7cd9c26743578e9bdc8697ee3ef4716f8f097d1a09b22a7"
+    },
+    "test_replay.mjs": {
+      "bytes": 4013,
+      "sha256": "bb4bf63dd769eec09244475b1e32d8efaa061538887225dbef40ac216098a183"
+    },
+    "check_frontend.py": {
+      "bytes": 182,
+      "sha256": "97ea2310662d1538825c433f5ecf1c2222b861f6d9448c4092663329c2225d0b"
+    },
+    "README.md": {
+      "bytes": 8652,
+      "sha256": "ee43a7e6fde11f87810331de51ee411c2524f9488a30a3e432750bee7e696319"
+    },
+    "DEMO.md": {
+      "bytes": 2662,
+      "sha256": "b6d5bd08c395474d6096ea40c3f1a6acd7274dd64b51c7dd5d007079a4ca7811"
+    },
+    ".gitignore": {
+      "bytes": 146,
+      "sha256": "a38e232f0b2872bb2e18e176755ab62bb6e08b63ec409de4e2ccb900ee951693"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 643,
+      "sha256": "f1d1dcbf6a31c1c50009edd53bf2b8e68f6c52b58398c91e7714dd9c2fd1cb72"
+    }
+  }
+}

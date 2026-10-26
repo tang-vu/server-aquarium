@@ -3,6 +3,7 @@ from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
 from hardware import collect_hardware, memory_usage
+from ai_bridge import AIEngine, RequestError
 
 ROOT = Path(__file__).resolve().parent
 PS = ['docker','ps','--all','--filter','label=com.docker.compose.project=ods','--format','{{json .}}']
@@ -61,7 +62,7 @@ def collect(runner=None):
     return dict(source='docker',sampledAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 services=sorted(services,key=lambda s:s['name']),warning=warning)
 
-def make_server(port=4317,collector=None,hardware_collector=None):
+def make_server(port=4317,collector=None,hardware_collector=None,ai_engine=None):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args): pass
         def allowed(self):
@@ -90,24 +91,63 @@ def make_server(port=4317,collector=None,hardware_collector=None):
             if path=='/api/hardware':
                 try: return self.send(200,self.server.hardware_collector())
                 except Exception: return self.send(503,{'error':'Hardware telemetry unavailable.'})
-            files={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/telemetry.js':'telemetry.js','/styles.css':'styles.css','/aquarium-art.js':'aquarium-art.js','/aquarium-scene.js':'aquarium-scene.js','/recording.js':'recording.js','/hardware.js':'hardware.js','/demo.js':'demo.js'}
+            if path=='/api/ai/status':
+                return self.send(200,self.server.ai_engine.info())
+            match=re.fullmatch(r'/api/ai/jobs/([a-f0-9]{32})',path)
+            if match:
+                try: return self.send(200,self.server.ai_engine.snapshot(match[1]))
+                except RequestError as error: return self.send(error.status,{'error':str(error)})
+            files={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/telemetry.js':'telemetry.js','/styles.css':'styles.css','/aquarium-art.js':'aquarium-art.js','/aquarium-scene.js':'aquarium-scene.js','/recording.js':'recording.js','/hardware.js':'hardware.js','/demo.js':'demo.js','/replay-core.js':'replay-core.js','/replay.js':'replay.js','/lab.js':'lab.js','/observatory.css':'observatory.css','/sample-replay.json':'sample-replay.json'}
             name=files.get(path)
             if name is None: return self.send(404,{'error':'Not found'})
             file=ROOT/name
             if file.is_symlink() or not file.is_file(): return self.send(404,{'error':'Not found'})
-            mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8'}[file.suffix]
+            mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8'}[file.suffix]
             return self.send(200,file.read_bytes(),mime)
+        def do_POST(self):
+            if not self.allowed():
+                return self.send(403, {'error':'Local same-origin requests only'})
+            path = urlsplit(self.path).path
+            cancel = re.fullmatch(r'/api/ai/jobs/([a-f0-9]{32})/cancel', path)
+            if path not in ('/api/ai/run', '/api/ai/explain') and not cancel:
+                return self.refuse()
+            if self.headers.get('Transfer-Encoding') is not None:
+                return self.send(400, {'error':'A bounded Content-Length is required'})
+            if self.headers.get('Content-Type', '').split(';')[0].strip() != 'application/json':
+                return self.send(415, {'error':'Use application/json'})
+            length = self.headers.get('Content-Length', '')
+            if not re.fullmatch(r'[0-9]{1,6}', length):
+                return self.send(400, {'error':'A bounded Content-Length is required'})
+            length = int(length)
+            if not 1 <= length <= 65536:
+                return self.send(413, {'error':'Request is too large or empty'})
+            try:
+                self.connection.settimeout(5)
+                raw = self.rfile.read(length)
+                if len(raw) != length:
+                    raise ValueError('Incomplete body')
+                payload = json.loads(raw)
+                if cancel:
+                    if payload != {}:
+                        raise ValueError('Cancel takes an empty object')
+                    return self.send(200, self.server.ai_engine.cancel(cancel[1]))
+                return self.send(202, self.server.ai_engine.start('run' if path.endswith('/run') else 'explain', payload))
+            except RequestError as error:
+                return self.send(error.status, {'error':str(error)})
+            except (ValueError, TypeError, OSError):
+                return self.send(400, {'error':'Invalid bounded JSON request'})
         def refuse(self):
             return self.send(405 if self.allowed() else 403,{'error':'Read-only companion'})
-        do_POST=do_PUT=do_DELETE=do_OPTIONS=refuse
+        do_PUT=do_DELETE=do_OPTIONS=refuse
     server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
     server.collector=collector or collect
     server.hardware_collector=hardware_collector or collect_hardware
+    server.ai_engine=ai_engine if ai_engine is not None else AIEngine()
     server.daemon_threads=True
     return server
 
 if __name__=='__main__':
     with make_server() as server:
-        print('Server Aquarium: http://127.0.0.1:4317 (read-only Docker telemetry)',flush=True)
+        print('Server Aquarium: http://127.0.0.1:4317 (telemetry and explicit ODS AI requests)',flush=True)
         try: server.serve_forever()
         except KeyboardInterrupt: pass

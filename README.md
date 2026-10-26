@@ -1,60 +1,85 @@
 # Server Aquarium
 
-A calm, interactive view of your ODS stack. Each fish is a service: CPU changes its pace, container RAM changes its size, and confirmed stopped services float belly-up. A separate machine-resources row shows host RAM, NVIDIA GPU load, VRAM, temperature and power. Select a fish or keyboard-accessible service card to inspect its observations.
+A living view of your ODS stack: observe the machine, replay a moment, and ask your ODS model to explain the recorded evidence.
+
+**[Open the public demo](https://tang-vu.github.io/server-aquarium/)** · [Source](https://github.com/tang-vu/server-aquarium) · [CI checks](https://github.com/tang-vu/server-aquarium/actions/workflows/ci.yml)
+
+## Explore
+
+- **Aquarium:** each fish is a service. CPU changes its pace, container RAM changes its size, and confirmed offline services float belly-up. Select a fish or its keyboard-accessible service card.
+- **Simulation Studio:** Calm waters, AI inference, Traffic surge and Recovery drill. These are explicitly scripted readings from a fictional 32 GiB host and 16 GiB accelerator. Pause, resume and restart a scene; manual incidents never change a real service.
+- **Machine resources:** host RAM, separately labeled WSL runtime RAM, and NVIDIA GPU utilization, VRAM, temperature and power. GPU measurements cover the whole device and other host workloads; no per-container GPU attribution is measured.
+- **Flight recorder:** up to 120 captures over a rolling ten-minute window per source, stored in this browser. Scrub the chart, choose a baseline, inspect a recorded moment, and save or import a bounded JSON replay. The main aquarium keeps its current view.
+- **AI lab:** explicitly run a prompt through your configured ODS gateway, see streamed text, first-content latency, provider-reported output tokens, total elapsed time and end-to-end output tokens/second. The live aquarium is selected automatically for a real run.
+- **Explain this moment:** send one selected replay frame and an optional earlier baseline to ODS. The companion builds bounded evidence and computed changes. The response includes clickable references back to the captured moments. Model interpretation and proposed checks remain separate from observed facts.
+- **Reports:** Save replay, Save AI report, Export observations and the fifteen-second aquarium video are explicit local downloads. After recording ends, choose Save video. Video captures the aquarium, not the desktop or microphone.
+
+The public demo uses simulated data and a recorded ODS explanation for its exact sample comparison. Real model requests and real hardware readings require the local companion. Static hosting has no gateway credentials or service-control endpoint.
 
 ## Run
 
-Python 3.11+ is the only application dependency. Docker is needed for real service observations. NVIDIA GPU readings require the installed nvidia-smi utility; no Python packages are required.
+Python 3.11+ is the only application dependency. Docker is needed for real ODS service observations. NVIDIA readings use the installed nvidia-smi utility. No npm or Python packages are required to run the app.
 
 ~~~sh
 python3 companion.py
 ~~~
 
-On Windows use py companion.py. Open **http://127.0.0.1:4317**, then choose **This computer**. The default **Demo aquarium** uses explicitly simulated service, RAM and GPU data; its CPU spike, outage and recovery controls never change a real service. The static ODS preview and opening index.html directly support this demo. Live data requires the companion URL.
+On Windows use py companion.py. Open the loopback address printed by the companion (port 4317), then choose **This computer** for real observations.
 
-## Simulation Studio
+For AI requests, configure the companion process environment before launching it:
 
-The Demo aquarium has four selectable scenes: Calm waters, AI inference, Traffic surge and Recovery drill. Workload values evolve every 1.5 seconds with explicitly simulated host RAM, GPU/VRAM and per-service memory. AI inference emphasizes the Model Engine; Traffic surge highlights resource pressure in Portal, Database and Background Worker. The 24-second Recovery drill takes Database offline from second 6 to 13, reconnects it and returns to healthy flow.
+~~~sh
+export AQUARIUM_ODS_TOKEN='your-ODS-gateway-key'
+export AQUARIUM_ODS_MODEL='ods/current'
+python3 companion.py
+~~~
 
-Pause simulation freezes the workload, its progress and fish motion. Resume continues the scene. Restart scene resets its time and manual incidents. CPU spike and Outage hold a selected service in that state until Recover all, Restart scene or choosing another scene. Recover all returns to Calm waters. Attention remains a service-resource filter. The simulated hardware is a fictional 32 GiB host and 16 GiB accelerator, not a claim about the current computer. Switching to This computer hides the studio and resumes the independent live collectors.
+PowerShell:
 
-The demo adds a procedural reef, light caustics, drifting glints, fish wakes and an inference halo. Reduced-motion preferences stop decorative motion; numerical observations still update unless paused. Demo rendering and incident controls make no changes to the machine or its real services.
+~~~powershell
+$env:AQUARIUM_ODS_TOKEN = 'your-ODS-gateway-key'
+$env:AQUARIUM_ODS_MODEL = 'ods/current'
+py companion.py
+~~~
 
-## Use it
+The default gateway uses HTTP loopback port 4000 with the /v1 base path. Set AQUARIUM_ODS_BASE_URL if your ODS gateway has another base URL. Only HTTP/HTTPS loopback targets are accepted; redirects and environment proxies are disabled. For a Qwen route where thinking should be disabled, set AQUARIUM_ODS_DISABLE_THINKING=1. Otherwise that optional template setting is omitted. Explain requests JSON-object output; the selected model/gateway must support that response format.
 
-- The machine-resources row shows used/total host RAM and available RAM; on WSL it separately labels the ODS WSL runtime RAM. NVIDIA cards show GPU utilization, used/total VRAM, temperature and power for each detected device.
-- Choose a service to see CPU, container RAM in bytes and percentage of its limit, Docker state/health and the last 60 CPU observations. Selection survives refreshes, resize and expanded view.
-- **Attention** filters service CPU or RAM above 70%, stopped, unhealthy, starting or stale services. It is a visual advisory, not an incident detector or a GPU alert.
-- **Export observations** saves local JSON with current machine readings, per-container RAM amounts/limits, service session histories and up to 100 activity events.
-- **Record report** saves up to 15 seconds of local WebM showing the aquarium, service observations and a compact machine RAM/GPU/VRAM summary. It works in demo and live modes, captures neither the desktop nor audio, and can be stopped early. After recording finishes, choose **Save video** to download the WebM.
-- Day/night, Feed, expanded view and Escape work without changing service state. Keyboard focus and reduced-motion preferences are supported.
+The companion reads only these explicitly named AI environment settings. It does not load an .env file or discover gateway keys from other apps. Credentials stay in the companion process and are not returned in API responses, frontend files, replays or AI reports. Inference follows the configured ODS route: select a locally hosted model in ODS for local-only inference. Explain sends the selected replay measurements to that route.
 
-## Read the data correctly
+AI is optional. Without its configuration, hardware observation, Simulation Studio, history, imports and exports continue to work.
 
-The three memory scopes are distinct: physical host RAM; ODS WSL runtime RAM, when applicable; and each container's memory usage/limit. Windows host RAM comes from GlobalMemoryStatusEx on native Windows, or a fixed read-only PowerShell CIM query when running inside WSL. Linux RAM comes from /proc/meminfo. A failed WSL host query stays unavailable; runtime RAM is never relabeled as host RAM.
+## Read the evidence correctly
 
-GPU readings describe the **whole device, shared by all host workloads**. They are not measured per-container GPU attribution. The current reader supports NVIDIA through nvidia-smi; unsupported or unavailable GPU sensors show an explicit unavailable state. Demo hardware is labeled simulated. Missing numbers remain an em dash; measured zero remains zero. GPU utilization, VRAM, temperature and power are separate readings and do not imply which service caused them.
+Host RAM, WSL runtime RAM, container RAM and VRAM describe different scopes. Windows memory uses GlobalMemoryStatusEx, or a fixed read-only PowerShell CIM query from WSL; Linux memory uses /proc/meminfo. Unsupported RAM/GPU readers stay unavailable. A failed Windows host query never relabels WSL RAM as host RAM.
 
-Service CPU is Docker's percentage and can exceed 100% across multiple cores; fish speed saturates at 100%. Container RAM percentage is relative to the container/engine limit; amounts are parsed from Docker's rounded MemUsage field. A running container without a healthcheck is labeled Running; a healthy check does not verify the whole application.
+Docker CPU may exceed 100% across multiple cores. Fish speed and the history chart display cap at 100%; the original value remains in the inspector and replay data. Container RAM percentages use the container/engine limit; byte amounts come from Docker's rounded MemUsage field. Missing values stay unknown and measured zero stays zero. A running container without a healthcheck is Running; a healthy check is not a full application test.
 
-In This computer mode, service and machine sensors poll independently every five seconds. GPU or Docker failure does not erase successful readings from the other sensor. After 15 seconds without fresh observations, the affected values become unknown and the view reconnects automatically. Retained stale services become Unknown and unconfirmed running counts become em dashes. Before a first valid response, counts are unknown; a valid empty list is true zero. Histories are session-local, disappear on reload and clear on source changes. Collection is bounded to 64 eligible ODS services and 16 GPUs.
+Live collectors poll independently every five seconds. After fifteen seconds without fresh readings, the affected values become unknown and reconnect automatically. Capture timestamps are recorder times; a capture can repeat the latest available sensor sample. Source-specific histories are isolated. Browser background throttling can slow animation and capture cadence. Imported files and the bundled sample are labeled as recorded/imported data.
 
-## Privacy and boundaries
+AI latency starts at submission and ends at first nonempty content, not the role-only stream event. Output token count comes from the gateway's usage receipt; missing usage stays unknown. Tokens per second divides reported output tokens by total elapsed time, including the wait for first content. It is not a standardized cross-model benchmark.
 
-The companion binds only to 127.0.0.1:4317 and validates exact Host/Origin values. It serves a fixed asset list and exposes only read-only GET APIs for service telemetry and machine hardware. Docker collection uses a Compose-project-filtered listing and a resource sample for validated discovered running IDs. Hardware collection uses fixed argument lists for nvidia-smi and, on WSL, the read-only PowerShell host-memory query; native Windows and Linux memory use local OS interfaces. Subprocesses use shell=False and bounded timeouts. There are no service mutations, shell commands supplied by browser input, environment/credential/log/volume reads, analytics, external fonts, remote assets or automatic uploads.
+Explanation references are checked against known evidence IDs and link to the supplied replay frames. Computed changes distinguish host RAM from container RAM and unchanged values from increases. Replay data is supplied by the browser or an imported file; the companion does not certify its origin. Citation validation checks structure and reference identity, not the semantic truth of every model sentence. The model has no tools or service-mutation capability.
+
+## Boundaries
+
+The companion binds to loopback, validates exact Host/Origin values, serves a fixed asset list and exposes no service start/stop/restart, shell, file-management or model-switching API. Docker/hardware collection uses fixed read-only commands and bounded timeouts; it reads no credentials, logs or volumes.
+
+Only explicit same-origin JSON requests can start or cancel an AI job. Request bodies are capped at 64 KiB, prompts at 2000 characters, and comparisons at two bounded frames. There is one active request and up to eight in-memory receipts. Stream size, output size and duration are bounded; failed/truncated streams are not reported as successful. Cancellation is cooperative between upstream reads. Refresh can resume an existing per-tab receipt; it does not automatically resubmit the inference.
+
+No analytics, remote fonts, automatic uploads or cloud backend are added by the app. Browser replay storage contains resource readings; AI reports contain generated text, referenced evidence and selected frames. Use explicit downloads to keep a portable copy.
 
 ## Validate
 
 ~~~sh
-python3 -m unittest -v test_companion test_hardware
+python3 -m unittest discover -v
+python3 check_frontend.py
+node --test test_replay.mjs
 ~~~
 
-The 27 fixture/HTTP tests cover Docker fields, RAM units/limits, missing versus measured zero, multicore CPU, health distinctions, stopped/foreign containers, failed collection, read-only HTTP boundaries and client disconnects; hardware tests also cover GPU parsing, multiple devices, independent sensor failures, native Windows memory, and the Windows-host versus WSL-runtime distinction. Browser checks and exact source hashes are recorded separately; static publication alone is not a browser test.
-
-Frontend: index.html, styles.css, aquarium-art.js, app.js, aquarium-scene.js, telemetry.js, hardware.js, demo.js (simulation scenes and artwork) and recording.js. Local bridge: companion.py and hardware.py. Tests: test_companion.py and test_hardware.py. DEMO.md contains the walkthrough. demo-manifest.json and server-aquarium-demo.zip describe this Simulation Studio release; earlier source-manifest.json and final archives belong to the previous release.
+Node.js is needed only for developer checks. CI runs Python 3.11 and Node 24 on Ubuntu and Windows. Tests cover real HTTP boundaries and streamed fixtures, authentication failures, redirects, truncation, cancellation, measured zero versus missing data, evidence/source validation, unchanged container memory, replay bounds, retention and citation references. Fixtures require neither Docker nor a real gateway key. Live/browser validation is recorded separately; green fixture tests do not establish every external runtime contract.
 
 ## Collaboration and Dev Jam
 
-**tang-vu leads the contribution**, including project direction, usefulness and quality requirements, collaborating with Codex on implementation guidance, reference source in prompts, review and browser validation. The ODS Portal model and workspace tools performed all application source edits and build steps. Saved Portal prompts/tool receipts document that workflow.
+**tang-vu leads the contribution**, including project direction, scope, usefulness and quality requirements, collaborating with Codex on reference source, prompts, implementation guidance, analysis, review and browser validation. ODS Portal model/workspace tools performed all application source edits and build steps. Git publication and command/browser QA were executed with Codex assistance; source receipts preserve that provenance.
 
-DEMO.md provides a walkthrough and draft entry text. No contest entry or public deployment has been submitted; contest eligibility is not determined by these artifacts.
+See DEMO.md for the walkthrough and draft entry. No contest submission has been made, and these artifacts do not establish contest eligibility. Historical manifests describe earlier versions; RELEASE.json describes the current source bundle.
