@@ -1,0 +1,65 @@
+{
+  "release": "Server Aquarium Simulation Studio",
+  "files": {
+    "index.html": {
+      "bytes": 4567,
+      "sha256": "a89a6290fcd3e507324c6b7469313b0c0463625d6f37b38cde779297d0e79b55"
+    },
+    "styles.css": {
+      "bytes": 15604,
+      "sha256": "52d9a10a786cc07cac2b677bd1f7591ad4aaa6837f79577ea117b17be1a9ac61"
+    },
+    "aquarium-art.js": {
+      "bytes": 5255,
+      "sha256": "9f13b35a70a9ee62c5695e118044e0a6d579cf7bfa043a744b7abba9ab927a35"
+    },
+    "app.js": {
+      "bytes": 8599,
+      "sha256": "dfada069c22cd55c7bb4935df2c9182200b1ecfd67b4c392d64864c3c367413e"
+    },
+    "aquarium-scene.js": {
+      "bytes": 5137,
+      "sha256": "2eccfdde65564e790b3d89004168a05db14333f3604440a744eea26d84431ec2"
+    },
+    "telemetry.js": {
+      "bytes": 3711,
+      "sha256": "1e641c016a9195611b1ae2662016befa3ce2c012e38f1b91dafec27f87eccd95"
+    },
+    "hardware.js": {
+      "bytes": 6138,
+      "sha256": "8e20ad32ef0fa285e643a49b3afeeace7b4838ba8c02f154363458dff36a9806"
+    },
+    "demo.js": {
+      "bytes": 10515,
+      "sha256": "b52417711061df46b18cee27df084c6d9d3ccf979cd0f684f0d112c1f169a1bc"
+    },
+    "recording.js": {
+      "bytes": 4065,
+      "sha256": "a5769f2efec78fa71cb51b4ccff13e834744e7dbfe3179232b2853115ad7810e"
+    },
+    "companion.py": {
+      "bytes": 6549,
+      "sha256": "069af72ba6dfde5083c9450c9e89957acc70bb6d620682d19a8bd222af1eb8d1"
+    },
+    "hardware.py": {
+      "bytes": 5478,
+      "sha256": "17b334d240f2103368fdc362c8337b64d67aae8070effce858128dfc813fca34"
+    },
+    "test_companion.py": {
+      "bytes": 6720,
+      "sha256": "4e6bf0f8dc49de52e2e428762a93952a4d49a708987b3b60878abd9cb0a02e17"
+    },
+    "test_hardware.py": {
+      "bytes": 5927,
+      "sha256": "5090a0511ecdd477635f1acd8d41f8a82b8217f2f3042fbaf6cfecc311cd7978"
+    },
+    "README.md": {
+      "bytes": 7703,
+      "sha256": "41e0bca61a904f2eb14b30da59b4f180a41b761d80b8cdbfbbb2153eee2194f8"
+    },
+    "DEMO.md": {
+      "bytes": 2545,
+      "sha256": "0c9ccc86cd8864ead361575cfd942e23b40cfd85477fbd704840038203ed744c"
+    }
+  }
+}
